@@ -1,0 +1,2 @@
+patchedDependencies:
+  gulp-cli@3.0.0: patches/gulp-cli@3.0.0.patch

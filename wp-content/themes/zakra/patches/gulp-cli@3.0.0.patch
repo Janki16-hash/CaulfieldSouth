@@ -1,0 +1,13 @@
+diff --git a/lib/shared/require-or-import.js b/lib/shared/require-or-import.js
+index 4cf5877e232076feed01f4dd1e5489da99392914..6b1fb8f47c409183816b9cec2e1508c67264dadf 100644
+--- a/lib/shared/require-or-import.js
++++ b/lib/shared/require-or-import.js	
+@@ -23,7 +23,7 @@ function requireOrImport(path, callback) {
+     if (pathToFileURL && importESM) {
+       // Because e.code is undefined on nyc process.
+       /* istanbul ignore else */
+-      if (e.code === 'ERR_REQUIRE_ESM' || process.env.NYC_CONFIG) {
++      if (e.code === 'ERR_REQUIRE_ESM' || e.code === 'ERR_REQUIRE_ASYNC_MODULE' || process.env.NYC_CONFIG) {
+         // This is needed on Windows, because import() fails if providing a Windows file path.
+         var url = pathToFileURL(path);
+         importESM(url).then(function(esm) { callback(null, esm); }, callback);
